@@ -32,9 +32,36 @@ def login_page(request):
 
 
 def signup_page(request):
+    register_form = RegisterForm()
+    if request.method=='POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        mobile_number = request.POST.get('mobile_number')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
 
-    return render(request,'register_page.html')
+        if password != confirm_password:
+            print("password not matched ")
+            messages.warning(request,"Password DoesNot Match ")
+            return render(request,'register_page.html',{'form':register_form})
+        return redirect(welcome_page,{'name':username})
+    else:
+       
+        return render(request , 'register_page.html',{'form':register_form})
 
 
 def welcome_page(request):
     return render(request,'welcome.html')
+
+
+def product_page(request):
+    print("product page ")
+    return render(request,'products.html')
+
+def cart_page(request):
+    print("cart page ")
+    return render(request,"cart.html")
+
+def user_details(request):
+    print("user detaisl ")
+    return render(request,"user_details.html")

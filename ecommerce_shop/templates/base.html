@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <!-- Add common CSS and JavaScript files -->
+    <style>
+        /* Add custom styles here */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        /* Style for active link */
+        nav a.active {
+            text-decoration: underline;
+            font-weight: bold;
+            color: aqua;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header content -->
+    <header>
+        <h1>Nandha Shopping </h1>
+        <hr>
+        <nav>
+            <a href="{%  url 'welcome_page' %}" {% if request.path == '/welcome' %}class="active"{% endif %}>Home </a>
+
+            <a href="{%  url 'product_page' %}" {% if request.path == '/products' %}class="active"{% endif %}>Products</a>
+            <a href="{%  url 'cart_page' %}" {% if request.path == '/cart' %}class="active"{% endif %}>Cart</a>
+            <a href="{%  url 'user_details_page' %}" {% if request.path == '/details' %}class="active"{% endif %}>User Details</a>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer content -->
+    <footer>
+        <p>Follow us on social media:</p>
+        <a href="https://instagram.com"><img src="instagram-icon.png" alt="Instagram"></a>
+        <a href="https://twitter.com"><img src="twitter-icon.png" alt="Twitter"></a>
+        <!-- Add other social media links -->
+        <p>&copy; 2024 My Website</p>
+     
+    </footer>
+</body>
+</html>
