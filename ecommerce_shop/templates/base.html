@@ -48,6 +48,9 @@
     <!-- Header content -->
     <header>
         <h1>Nandha Shopping </h1>
+        <h3 style ="float: right;">{%block username %}{{request.session.username}}{%endblock%}</h3>
+        
+       
         <hr>
         <nav>
             <a href="{%  url 'welcome_page' %}" {% if request.path == '/welcome' %}class="active"{% endif %}>Home </a>
@@ -55,12 +58,14 @@
             <a href="{%  url 'product_page' %}" {% if request.path == '/products' %}class="active"{% endif %}>Products</a>
             <a href="{%  url 'cart_page' %}" {% if request.path == '/cart' %}class="active"{% endif %}>Cart</a>
             <a href="{%  url 'user_details_page' %}" {% if request.path == '/details' %}class="active"{% endif %}>User Details</a>
+           
         </nav>
     </header>
 
     <!-- Main content -->
     <div class="content">
         {% block content %}{% endblock %}
+
     </div>
 
     <!-- Footer content -->

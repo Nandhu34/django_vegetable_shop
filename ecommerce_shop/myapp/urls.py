@@ -8,6 +8,7 @@ urlpatterns=[
     path('welcome',welcome_page,name="welcome_page"),
     path('products',product_page,name="product_page"),
     path('cart',cart_page,name="cart_page"),
-    path('details',user_details,name="user_details_page")
+    path('details',user_details,name="user_details_page"),
+    path('admin/',admin_sample,name="admin")
 
 ]
